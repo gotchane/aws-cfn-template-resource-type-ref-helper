@@ -25,13 +25,13 @@ CSV.open(csvfile, 'w') do |row|
         if count.zero?
           datalist.push(data.text.tosjis)
         # Push required to datalist
-        elsif data.text =~ /(^\u5fc5\u9808:|^Required:)/
+        elsif data.text =~ /(^\u5fc5\u9808|^Required)/
           datalist.push(data.text.tosjis)
         # Push datatype to datalist
-        elsif data.text =~ /(^\u30bf\u30a4\u30d7:|^Type:)/
+        elsif data.text =~ /(^\u30bf\u30a4\u30d7|^Type)/
           datalist.push(data.text.tosjis)
         # Push condition to datalist
-        elsif data.text =~ /(^\u66f4\u65b0\u306b\u4f34\u3046|^Condition:)/
+        elsif data.text =~ /(^\u66f4\u65b0\u306b\u4f34\u3046|^\u578b|^Condition)/
           datalist.push(data.text.tosjis)
          end
       end
