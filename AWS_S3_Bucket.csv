@@ -1,0 +1,32 @@
+Property,Description,Required,DataType,Condition
+AccessControl,"バケットに事前定義されたアクセス許可を付与する、既定アクセスコントロールリスト (ACL)。既定 ACL に関する詳細については、Amazon S3 ドキュメントの「既定 ACL 」を参照してください。
+                              ","Required: No
+                              ","Type: String
+                              ",更新に伴う要件: 中断はありません。
+BucketName,"バケットの名前。名前を指定しないと、AWS CloudFormation は一意の物理 ID を生成し、その ID をバケット名として使用します。詳細については、「Name タイプ」を参照してください。バケット名には、小文字、数字、ピリオド (.)、およびダッシュ (-) 以外は使用できません。
+                                 ","Required: No
+                              ","Type: String
+                              ",更新に伴う要件: 置換。
+CorsConfiguration,"このバケットのオブジェクトの Cross-Origin Resource Sharing を定義したルール。詳細については、Amazon Simple Storage Service 開発者ガイドの「Cross-Origin Resource Sharing の有効化」を参照してください。
+                              ","Required: No
+                              ",タイプ: Amazon S3 Cors の設定,更新に伴う要件: 中断はありません。
+LifecycleConfiguration,"オブジェクトの存続期間中の Amazon S3 による管理方法を定義するルール。詳細については、Amazon Simple Storage Service 開発者ガイドの「オブジェクトのライフサイクル管理」を参照してください。
+                              ","Required: No
+                              ",タイプ: Amazon S3 のライフサイクル設定,更新に伴う要件: 中断はありません。
+LoggingConfiguration,ログの保管場所を定義する設定。,"Required: No
+                              ",タイプ: Amazon S3 ログ作成設定,更新に伴う要件: 中断はありません。
+NotificationConfiguration,Amazon S3 がどのようにバケットの通知を処理するかを定義する設定。,"Required: No
+                              ",タイプ: Amazon S3 NotificationConfiguration,更新に伴う要件: 中断はありません。
+ReplicationConfiguration,"S3 バケット内のオブジェクトをレプリケーションするための設定。レプリケーションを有効にするには、VersioningConfiguration プロパティを使用してバージョニングを有効にする必要もあります。
+                              ","Required: No
+                              ",Type: Amazon S3 ReplicationConfiguration,更新に伴う要件: 中断はありません。
+Tags,"この Amazon S3 バケットに対するタグ (キーと値のペア) の任意のセット。
+                                 ","Required: No
+                              ",Type: AWS CloudFormation Resource Tags,更新に伴う要件: 中断はありません。
+VersioningConfiguration,このバケットのすべてのオブジェクトの複数のバリアントを有効にします。バージョニングを有効にすると、オブジェクトが誤って削除または上書きされるのを防いだり、以前のバージョンを取得できるようオブジェクトをアーカイブしたりできます。,"Required: No
+                              ",Type: Amazon S3 バージョニング設定,更新に伴う要件: 中断はありません。
+WebsiteConfiguration,"バケットを静的ウェブサイトとして設定するために使用する情報。詳細については、「Amazon S3 での静的ウェブサイトのホスティング」を参照してください。
+                              ","Required: No
+                              ",Type: ウェブサイト設定タイプ,更新に伴う要件: 中断はありません。
+DomainName,指定されたバケットの DNS 名を返します。
+WebsiteURL,指定されたバケットの Amazon S3 ウェブサイトエンドポイント。
