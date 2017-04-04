@@ -9,13 +9,16 @@ url = ARGV[0]
 html = open(url).read
 doc = Nokogiri::HTML.parse(html.toutf8, nil, charset)
 
-csvfile = doc.xpath('//h1[@class="topictitle"]').text.gsub(/::/, '_').concat('.csv')
+csvfile = "target/" + doc.xpath('//h1[@class="topictitle"]').text.gsub(/::/, '_').concat('.csv')
 
 CSV.open(csvfile, 'w') do |row|
   # Add header to fisrt row of csv file
   row << %w(Property Description Required DataType Condition)
-    doc.xpath('//div[@class="variablelist"]/dl/dt').each do |dt|
-      datalist = []
+  dtlist = doc.xpath('//div[@class="variablelist"]/dl/dt')
+  dtlist.each_with_index do |dt, num|
+    datalist = []
+    # add data except last loop
+    if num != doclist.length - 1
       # Push property to datalist
       datalist.push(dt.text.tosjis)
       # Get dd element
@@ -33,8 +36,9 @@ CSV.open(csvfile, 'w') do |row|
         # Push condition to datalist
         elsif data.text =~ /(^\u66f4\u65b0\u306b\u4f34\u3046|^\u578b|^Condition)/
           datalist.push(data.text.tosjis)
-         end
+        end
       end
       row << datalist
     end
+  end
 end
